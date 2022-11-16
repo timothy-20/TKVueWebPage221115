@@ -1,17 +1,11 @@
 <template>
   <div id="app">
     <div class="container">
-      <div class="header-section">
-        <TKHeaderSection />
-      </div>
+      <div class="header-section"><TKHeaderSection /></div>
 
       <div class="content-section">
-        <div class="aside-menu">
-
-        </div>
-        <div class="main-content">
-          <HelloWorld msg="Welcome to Your Vue.js App"/>
-        </div>
+        <div class="side-table-section"><TKSideTableSection /></div>
+        <div class="main-content-section"><HelloWorld msg="Welcome to Your Vue.js App"/></div>
       </div>
 
       <div class="footer-section">
@@ -22,14 +16,16 @@
 </template>
 
 <script>
-import HelloWorld from "@components/HelloWorld"
-import TKHeaderSection from "@components/TKMainHeaderSection"
+import HelloWorld from "@components/HelloWorld";
+import TKHeaderSection from "@components/TKMainHeaderSection";
+import TKSideTableSection from "@components/TKMainSideTableSection";
 
 export default {
   name: 'App',
   components: {
     HelloWorld,
     TKHeaderSection,
+    TKSideTableSection,
   }
 }
 </script>
@@ -68,16 +64,17 @@ export default {
 * {
   margin: 0 auto;
   padding: 0;
-  border: 0px solid;
+  border: 0 solid;
   box-sizing: border-box;
   outline: none;
 }
 
 #app {
-  --primary-bg-color: #2d2d2d;
+  --primary-bg-color: #343434;
   --primary-border-color: #101010;
   --primary-button-color: #000000;
   --primary-font-color: #ffffff;
+  --primary-box-shadow-bottom: 0 1px 0 #262626, 0 1.5px 0 #333333, 0 2px 0 #363636;
 
   font-family: NotoSansKR-Regular, sans-serif;
   transform: rotate(0.04deg);
@@ -100,7 +97,7 @@ export default {
 .header-section {
   height: 5rem;
   display: flex;
-  align-items: stretch;
+  z-index: 9999;
 }
 
 .content-section {
@@ -109,12 +106,12 @@ export default {
   flex-flow: row wrap;
 }
 
-.content-section .aside-menu {
-  min-width: 15rem;
-  background-color: brown;
+.content-section .side-table-section {
+  min-width: 16rem;
+  display: flex;
 }
 
-.content-section .main-content {
+.content-section .main-content-section {
   flex-grow: 1;
 }
 

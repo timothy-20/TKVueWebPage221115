@@ -6,7 +6,10 @@
 
 <script>
 export default {
-  name: "TKHomePage"
+  name: "TKHomePage",
+  props: {
+
+  }
 }
 </script>
 
