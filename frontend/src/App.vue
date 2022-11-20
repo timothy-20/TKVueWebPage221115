@@ -2,17 +2,15 @@
   <div id="app">
     <div class="container">
       <div class="header-wrapper">
-        Header wrapper
+        <TKHeaderSection />
       </div>
       <div class="main-wrapper">
         <div class="aside-content">
-          <div class="test-content">
-
-          </div>
-
+          <TKSideTableSection />
         </div>
 
         <div class="main-content">
+          <HelloWorld />
         </div>
       </div>
     </div>
@@ -20,16 +18,16 @@
 </template>
 
 <script>
-// import HelloWorld from "@components/HelloWorld";
-// import TKHeaderSection from "@components/TKMainHeaderSection";
-// import TKSideTableSection from "@components/TKMainSideTableSection";
+import HelloWorld from "@components/HelloWorld";
+import TKHeaderSection from "@components/TKMainHeaderSection";
+import TKSideTableSection from "@components/TKMainSideTableSection";
 
 export default {
   name: 'App',
   components: {
-    // HelloWorld,
-    // TKHeaderSection,
-    // TKSideTableSection,
+    HelloWorld,
+    TKHeaderSection,
+    TKSideTableSection,
   }
 }
 </script>
