@@ -9,27 +9,121 @@
 .side-table-container {
     min-height: 100%;
     display: flex;
-    flex-flow: row wrap;
-    align-items: center;
+    flex-flow: column wrap;
+    overflow: hidden;
+}
+
+section.title {
+    z-index: 2;
+    box-shadow: var(--primary-box-shadow-bottom);
+    background-color: var(--primary-dark-bg-color);
 }
 
 .title-wrapper {
-    z-index: 2;
-    box-shadow: var(--primary-box-shadow-bottom);
-    background-color: var(--primary-bg-color);
+    margin: 0.8rem 1rem;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.title {
-    background-color: red;
+.title .title-text {
+    font-size: 15px;
+    font-family: NotoSansKR-Bold;
+}
+
+.title button.title-extension {
+    width: 0.8rem;
+    height: 0.8rem;
+}
+
+.title-extension svg.arrow-image {
+    fill: none;
+    stroke: #dedede;
+    stroke-width: 0.9rem;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .table-wrapper {
     flex-grow: 1;
     z-index: 1;
-    background-color: cyan;
+    background-color: var(--primary-bg-color);
 }
 
-.user-info-wrapper {
+section.footer {
     z-index: 2;
-    background-color: chocolate;
+    background-color: var(--primary-dark-bg-color);
+}
+
+.footer-wrapper {
+    height: 3rem;
+    margin: 0.3rem 0.5rem;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.user-info-container {
+    min-width: 50%;
+    max-width: 60%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.user-info-container img.user-profile {
+    width: 2.5rem;
+    border-radius: 2rem;
+    background-color: white;
+}
+
+.user-info-container .user-info {
+    flex-grow: 1;
+    padding-left: 0.5rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    text-align: left;
+}
+
+.user-info .user-name {
+    line-height: 14px;
+    font-size: 13px;
+    font-family: NotoSansKR-Bold;
+}
+
+.user-info .user-description {
+    line-height: 13px;
+    font-size: 12px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.user-info .user-description > span {
+    color: lightgray;
+}
+
+.button-container {
+    flex-grow: 1;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.4rem;
+}
+
+.button-container button {
+    width: 1.3rem;
+    height: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.2rem;
+}
+
+button.setting .image-wrapper {
+    width: inherit;
+    height: inherit;
 }
