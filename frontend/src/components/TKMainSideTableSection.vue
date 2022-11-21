@@ -12,9 +12,11 @@
         </div>
       </section>
 
-      <div class="table-wrapper">
-
-      </div>
+      <section class="table">
+        <div class="table-wrapper">
+          <TKCategoryTableCell />
+        </div>
+      </section>
 
       <section class="footer">
         <div class="footer-wrapper">
@@ -40,11 +42,13 @@
 </template>
 
 <script>
+import TKCategoryTableCell from "@components/TKCategoryTableCell";
+
 export default {
   name: "TKMainSideTableSection",
-  props: {
-
-  }
+  components: {
+    TKCategoryTableCell,
+  },
 }
 </script>
 

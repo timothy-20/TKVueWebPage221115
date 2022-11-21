@@ -1,0 +1,65 @@
+* {
+
+}
+
+#root {
+
+}
+
+svg {
+    filter: invert(70%);
+}
+
+.cell-wrapper {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.category-label {
+    height: 24px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+}
+
+.category-label .category-title {
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    text-align: left;
+    line-height: 100%;
+    font-size: 12px;
+    color: lightgray;
+}
+
+.category-title svg.chevron-icon {
+    width: 7px;
+    height: 7px;
+    margin: 0 4px;
+}
+
+.category-label .button-container {
+    min-width: 18px;
+    margin-left: 6px;
+    display: flex;
+    align-items: center;
+}
+
+button.add-children {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+}
+
+svg.plus-icon {
+    margin: 0 4px;
+}
+
+.category-content {
+    height: 6rem;
+    margin-top: 0.3rem;
+    background-color: orange;
+}

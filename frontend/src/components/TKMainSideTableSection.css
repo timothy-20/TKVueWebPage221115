@@ -4,13 +4,13 @@
 
 #root {
     height: 100%;
+    overflow: hidden;
 }
 
 .side-table-container {
     min-height: 100%;
     display: flex;
     flex-flow: column wrap;
-    overflow: hidden;
 }
 
 section.title {
@@ -45,10 +45,17 @@ section.title {
     stroke-linejoin: round;
 }
 
-.table-wrapper {
-    flex-grow: 1;
+section.table {
+    flex: 1 0 0;
+    overflow: hidden auto;
     z-index: 1;
     background-color: var(--primary-bg-color);
+}
+
+.table-wrapper {
+    margin-top: 0.5rem;
+    margin-right: 0.4rem;
+    margin-bottom: 0.5rem;
 }
 
 section.footer {
@@ -58,7 +65,7 @@ section.footer {
 
 .footer-wrapper {
     height: 3rem;
-    margin: 0.3rem 0.5rem;
+    margin: 0.3rem 0.7rem;
     display: flex;
     flex-flow: row wrap;
     align-items: center;
