@@ -18,7 +18,7 @@
         </div>
 
         <div class="button-container">
-          <button class="add-children" type="button">
+          <button class="add-children" type="button" v-on:click="select($event)">
             <svg class="plus-icon"
                  xmlns="http://www.w3.org/2000/svg"
                  xml:space="preserve"
@@ -41,7 +41,14 @@
 
 <script>
 export default {
-  name: "TKCategoryTableCell"
+  name: "TKCategoryTableCell",
+  methods: {
+    select: function (event) {
+      const targetClass = event.currentTarget.class;
+      console.log(event);
+      console.log(targetClass);
+    }
+  }
 }
 </script>
 

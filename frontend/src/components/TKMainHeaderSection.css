@@ -13,13 +13,12 @@ ul {
 }
 
 .header-wrapper {
-    height: 100%;
     margin: 0 2rem;
     display: flex;
+    flex-flow: row wrap;
 }
 
 .header-content {
-    max-width: 1440px;
     flex-grow: 1;
     display: flex;
     flex-flow: row wrap;
