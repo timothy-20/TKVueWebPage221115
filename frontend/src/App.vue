@@ -2,34 +2,36 @@
   <div id="app">
     <div class="container">
       <div class="header-wrapper">
-        <TKHeaderSection />
+        <tk-header-section />
       </div>
       <div class="main-wrapper">
         <div class="aside-content">
-          <TKSideTableSection />
+          <tk-side-table-section />
         </div>
 
         <div class="main-content">
-          <HelloWorld />
+          <hello-world />
         </div>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import HelloWorld from "@components/HelloWorld";
-import TKHeaderSection from "@components/TKMainHeaderSection";
-import TKSideTableSection from "@components/TKMainSideTableSection";
+<script lang="ts">
+import { Component, Vue } from "vue-property-decorator";
+import HelloWorld from "@components/HelloWorld.vue";
+import TKHeaderSection from "@components/TKMainHeaderSection.vue";
+import TKSideTableSection from "@components/TKMainSideTableSection.vue";
 
-export default {
-  name: 'App',
+@Component({
   components: {
-    HelloWorld,
-    TKHeaderSection,
-    TKSideTableSection,
-  }
-}
+    "hello-world": HelloWorld,
+    "tk-header-section": TKHeaderSection,
+    "tk-side-table-section": TKSideTableSection,
+  },
+})
+
+export default class App extends Vue {}
 </script>
 
 <style src="./App.css" />

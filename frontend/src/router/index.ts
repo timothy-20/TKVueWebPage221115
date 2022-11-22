@@ -7,7 +7,7 @@ const routes = [
     {
         name: "Home",
         path: "/home",
-        component: () => import("@views/TKHomePage")
+        component: () => import("@views/TKHomePage.vue")
     }
 ];
 
