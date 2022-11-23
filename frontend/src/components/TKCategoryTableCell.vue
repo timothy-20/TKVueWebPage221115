@@ -18,7 +18,7 @@
         </div>
 
         <div class="button-container">
-          <button class="add-children" type="button" v-on:click="showModal()">
+          <button class="add-children" type="button" v-on:click="presentModal">
             <svg class="plus-icon"
                  xmlns="http://www.w3.org/2000/svg"
                  xml:space="preserve"
@@ -35,19 +35,15 @@
       <div class="category-content">
 
       </div>
-
-      <tk-category-adder-modal v-if="this.isShownModal" />
     </div>
+
+    <tk-category-adder-modal v-show="isModalShown" v-on:dismiss="dismissModal" />
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import TKCategoryAdderModal from "@components/TKCategoryAdderModal.vue";
-
-declare interface TKFlags {
-  isShownModal: boolean,
-}
+import TKCategoryAdderModal from "@views/modal/TKCategoryAdderModal.vue";
 
 export default Vue.extend({
   name: "TKCategoryTableCell",
@@ -56,21 +52,29 @@ export default Vue.extend({
   },
   data: function () {
     return {
-      isShownModal: false as Boolean,
+      isModalShown: false as Boolean,
     };
   },
   methods: {
-    showModal(): void {
-      if (this.isShownModal) {
-        console.log("Modal is shown.")
+    presentModal(): void {
+      this.isModalShown = true;
 
-      } else {
-        console.log("Modal is hidden.")
-      }
+      console.log("Modal is shown.");
     },
+
+    dismissModal(): void {
+      this.isModalShown = false;
+
+      console.log("Modal is hidden.");
+    }
   },
 
   created() {
+
+  },
+
+  mounted() {
+
   }
 });
 

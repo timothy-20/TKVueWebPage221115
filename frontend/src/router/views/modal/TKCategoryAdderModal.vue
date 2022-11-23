@@ -1,6 +1,6 @@
 <template>
   <transition id="root">
-    <div class="modal-mask">
+    <div class="modal-mask" v-on:click="actionDismiss">
       <div class="modal-container">
         <div class="modal-header">
           Modal header
@@ -22,7 +22,18 @@
 import Vue from "vue";
 
 export default Vue.extend({
-  name: "TKCategoryAdderModal"
+  name: "TKCategoryAdderModal",
+  data: function () {
+    return {
+
+    };
+  },
+
+  methods: {
+    actionDismiss(): void {
+      this.$emit("dismiss");
+    }
+  }
 });
 </script>
 
