@@ -1,17 +1,19 @@
 <template>
   <transition id="root">
     <div class="modal-mask" v-on:click="actionDismiss">
-      <div class="modal-container">
-        <div class="modal-header">
-          Modal header
-        </div>
+      <div class="modal-wrapper">
+        <div class="modal-container">
+          <div class="modal-header">
+            Modal header
+          </div>
 
-        <div class="modal-content">
-          Modal content
-        </div>
+          <div class="modal-content">
+            Modal content
+          </div>
 
-        <div class="modal-submit">
-          Modal submit
+          <div class="modal-submit">
+            Modal submit
+          </div>
         </div>
       </div>
     </div>
