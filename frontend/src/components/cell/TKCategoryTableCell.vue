@@ -1,19 +1,20 @@
+
+
 <template>
   <div id="root">
-    <div class="cell-wrapper">
-      <div class="category-container">
+    <div class="category-container">
+      <div class="category-content" role="button">
         <img src="@assets/image/chevron-icon.svg" alt="left chevron icon" class="chevron-icon">
 
         <h3 class="category-title">
           <div>{{ this.categoryName }}</div>
         </h3>
-
-        <button type="button" v-on:click="presentModal" class="category-add">
-<!--          <img src="@assets/image/plus-icon.svg" alt="plus icon that mean add category" class="plus-icon">-->
-        </button>
       </div>
 
-      <div class="category-content">
+      <div class="category-add-wrapper">
+        <button class="category-add" type="button" v-on:click="presentModal">
+<!--          <img class="plus-icon" src="@assets/image/plus-icon.svg" alt="plus icon that mean add category">-->
+        </button>
       </div>
     </div>
 
