@@ -11,7 +11,7 @@
             "typeIcon title radioIcon"
             "typeIcon subTitle radioIcon";
     grid-column-gap: 11px;
-    grid-row-gap: 3px;
+    grid-row-gap: 4px;
     border-radius: 3px;
     background-color: #494949;
 }

@@ -16,7 +16,7 @@
 
             <button class="dismiss" v-on:click="actionDismiss">
               <div class="dismiss-image-wrapper">
-                <img src="@assets/image/dismiss-icon.svg" alt="" class="dismiss-image">
+                <img src="@assets/image/dismiss-icon.svg" alt="dismiss button icon" class="dismiss-image">
               </div>
             </button>
           </div>

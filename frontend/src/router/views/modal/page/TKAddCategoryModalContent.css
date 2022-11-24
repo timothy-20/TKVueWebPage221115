@@ -14,10 +14,6 @@
     gap: 10px;
 }
 
-section.channel-type {
-
-}
-
 .channel-label {
     margin-bottom: 8px;
     padding: 3px 0 3px 5px;
@@ -28,13 +24,79 @@ section.channel-type {
     color: lightgray;
 }
 
+.channel-label + div {
+    padding-left: 6px;
+}
+
 .channel-type-selector {
-    padding-left: 4px;
     display: flex;
     flex-flow: column wrap;
     gap: 8px;
 }
 
-section.channel-name {
+.text-field-wrapper {
+    padding: 8px;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    border-radius: 3px;
+    background-color: var(--primary-dark-bg-color, gray);
+}
 
+.text-field-wrapper .channel-type-icon {
+    width: 25px;
+}
+
+input.text-field {
+    margin-left: 5px;
+    flex: 1 1 auto;
+    font-size: 15px;
+    font-family: NotoSansKR-Regular;
+    color: var(--primary-font-color, white);
+    background-color: transparent;
+}
+
+section.channel-private-mode {
+    padding-top: 15px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+}
+
+.private-mode-wrapper {
+    display: grid;
+    grid-template-columns: 20px 1fr auto;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+            "icon title switch"
+            ". body switch";
+    grid-column-gap: 5px;
+    grid-row-gap: 3px;
+}
+
+.private-mode-wrapper .channel-type-icon {
+    grid-area: icon;
+}
+
+.private-mode-wrapper .title {
+    grid-area: title;
+    font-family: NotoSansKR-Medium;
+}
+
+.private-mode-wrapper .body {
+    grid-area: body;
+    padding-right: 30px;
+    font-size: 14px;
+    color: var(--primary-sub-title-text-color);
+}
+
+.private-mode-wrapper button.private-mode-switch {
+    grid-area: switch;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+button.private-mode-switch > img {
+    width: 40px;
+    height: auto;
 }
