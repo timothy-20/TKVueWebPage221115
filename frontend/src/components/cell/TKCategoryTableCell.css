@@ -6,60 +6,53 @@
 
 }
 
-svg {
-    filter: invert(70%);
-}
-
 .cell-wrapper {
-    display: flex;
-    flex-flow: column wrap;
+
 }
 
-.category-label {
-    height: 24px;
-    flex: 1 1 auto;
+.category-container {
+    padding: 2px 0;
     display: flex;
     flex-flow: row wrap;
     align-items: center;
+    /*justify-content: center;*/
+    gap: 3px;
+    background-color: #42b983;
 }
 
-.category-label .category-title {
+img.chevron-icon {
+    width: 12px;
+    rotate: 90deg;
+
+    background-color: pink;
+}
+
+h3.category-title {
     flex: 1 1 auto;
-    display: flex;
-    flex-flow: row wrap;
-    align-items: center;
-    text-align: left;
+    padding: 2px 0;
     line-height: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
     font-size: 12px;
-    color: lightgray;
+    font-weight: 500;
 }
 
-.category-title svg.chevron-icon {
-    width: 7px;
-    height: 7px;
-    margin: 0 4px;
+h3.category-title > div {
+    overflow: inherit;
+    white-space: inherit;
+    text-overflow: inherit;
 }
 
-.category-label .button-container {
-    min-width: 18px;
-    margin-left: 6px;
-    display: flex;
-    align-items: center;
-}
-
-button.add-children {
-    width: 18px;
-    height: 18px;
-    display: flex;
-    align-items: center;
-}
-
-svg.plus-icon {
-    margin: 0 4px;
+button.category-add {
+    background-color: forestgreen;
 }
 
 .category-content {
-    height: 6rem;
+    height: 10px;
     margin-top: 0.3rem;
     background-color: orange;
 }
