@@ -14,7 +14,6 @@
 }
 
 section.title {
-    z-index: 2;
     box-shadow: var(--primary-box-shadow-bottom);
     background-color: var(--primary-dark-bg-color);
 }
@@ -48,7 +47,6 @@ section.title {
 section.table {
     flex: 1 0 0;
     overflow: hidden auto;
-    z-index: 1;
     background-color: var(--primary-bg-color);
 }
 
@@ -59,7 +57,6 @@ section.table {
 }
 
 section.footer {
-    z-index: 2;
     background-color: var(--primary-dark-bg-color);
 }
 

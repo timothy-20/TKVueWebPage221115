@@ -1,0 +1,50 @@
+#root {
+    flex: 1 1 auto;
+}
+
+.container {
+    padding: 8px 13px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 30px 1fr 20px;
+    grid-template-areas:
+            "typeIcon title radioIcon"
+            "typeIcon subTitle radioIcon";
+    grid-column-gap: 11px;
+    grid-row-gap: 3px;
+    border-radius: 3px;
+    background-color: #494949;
+}
+
+.icon {
+    padding: 5px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon > img {
+    width: 100%;
+}
+
+.channel-type-icon {
+    grid-area: typeIcon;
+}
+
+.description-title {
+    grid-area: title;
+    font-family: NotoSansKR-Medium;
+    font-size: 16px;
+}
+
+.description-sub-title {
+    max-width: 90%;
+    grid-area: subTitle;
+    font-family: NotoSansKR-Regular;
+    font-size: 13px;
+    color: var(--primary-sub-title-text-color, lightgray);
+}
+
+.check-radio-icon {
+    grid-area: radioIcon;
+}

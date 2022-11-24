@@ -64,13 +64,19 @@ button {
 }
 
 #app {
+    --primary-dark-900-rgb: 4, 4, 5;
+    --primary-light-900-rgb: 6, 6, 7;
     --primary-light-bg-color: #656565;
     --primary-bg-color: #343434;
     --primary-dark-bg-color: #252525;
     --primary-border-color: #101010;
     --primary-button-color: #000000;
     --primary-font-color: #ffffff;
-    --primary-box-shadow-bottom: 0 1px 0 #262626, 0 1.5px 0 #333333, 0 2px 0 #363636;
+    --primary-box-shadow-bottom: 0 1px 0 rgba(var(--primary-dark-900-rgb),0.2),
+                                 0 1.5px 0 rgba(var(--primary-light-900-rgb),0.05),
+                                 0 2px 0 rgba(var(--primary-dark-900-rgb),0.05);
+    --primary-title-text-color: #ffffff;
+    --primary-sub-title-text-color: #c7c7c7;
 
     font-family: NotoSansKR-Regular, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -88,7 +94,7 @@ button {
 
 .header-wrapper {
     min-height: 5rem;
-    z-index: 9999;
+    z-index: 10;
 }
 
 .main-wrapper {

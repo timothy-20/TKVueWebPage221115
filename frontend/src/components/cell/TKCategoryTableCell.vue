@@ -33,49 +33,42 @@
       </div>
 
       <div class="category-content">
-
       </div>
     </div>
 
-    <tk-category-adder-modal v-show="isModalShown" v-on:dismiss="dismissModal" />
+    <tk-general-modal-frame v-show="isModalShown" v-on:dismiss="dismissModal">
+      <tk-add-category-content slot="modal-content" />
+    </tk-general-modal-frame>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from "vue";
-import TKCategoryAdderModal from "@views/modal/TKCategoryAdderModal.vue";
+import TKGeneralModalFrame from "@views/modal/TKGeneralModalFrame.vue";
+import TKAddCategoryModalContent from "@views/modal/page/TKAddCategoryModalContent.vue";
 
 export default Vue.extend({
   name: "TKCategoryTableCell",
   components: {
-    "tk-category-adder-modal": TKCategoryAdderModal,
+    "tk-general-modal-frame": TKGeneralModalFrame,
+    "tk-add-category-content": TKAddCategoryModalContent,
   },
+
   data: function () {
     return {
       isModalShown: false as Boolean,
     };
   },
+
   methods: {
     presentModal(): void {
       this.isModalShown = true;
-
-      console.log("Modal is shown.");
     },
 
     dismissModal(): void {
       this.isModalShown = false;
-
-      console.log("Modal is hidden.");
     }
   },
-
-  created() {
-
-  },
-
-  mounted() {
-
-  }
 });
 
 </script>

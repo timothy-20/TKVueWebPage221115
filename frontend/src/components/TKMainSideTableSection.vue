@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import TKCategoryTableCell from "@components/TKCategoryTableCell";
+import TKCategoryTableCell from "@components/cell/TKCategoryTableCell.vue";
 
 export default {
   name: "TKMainSideTableSection",
