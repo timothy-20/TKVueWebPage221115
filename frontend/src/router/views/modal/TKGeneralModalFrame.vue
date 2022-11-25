@@ -1,42 +1,47 @@
+<!--<div class="modal-wrapper">-->
+<!--<transition name="modal-container">-->
+<!--  <div class="modal-container" v-on:click.stop>-->
+<!--    <div class="modal-header">-->
+<!--      <div class="title-wrapper">-->
+<!--        <div class="title">-->
+<!--          <span>{{ this.title }}</span>-->
+<!--        </div>-->
+
+<!--        <div class="sub-title">-->
+<!--          <span>:{{ this.subTitle }}</span>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <button class="dismiss" v-on:click="actionDismiss">-->
+<!--        <div class="dismiss-image-wrapper">-->
+<!--          <img src="@assets/image/dismiss-icon.svg" alt="dismiss button icon" class="dismiss-image">-->
+<!--        </div>-->
+<!--      </button>-->
+<!--    </div>-->
+
+<!--    <div class="modal-content">-->
+<!--      <slot name="modal-content"></slot>-->
+<!--    </div>-->
+
+<!--    <div class="modal-submit">-->
+<!--      <button class="cancel">-->
+<!--        <span>CANCEL</span>-->
+<!--      </button>-->
+
+<!--      <button class="confirm">-->
+<!--        <span>{{ this.confirmButtonTitle }}</span>-->
+<!--      </button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</transition>-->
+<!--</div>-->
+
 <template>
-  <transition name="modal">
+  <transition name="modal-mask">
     <div class="modal-mask" v-on:click="actionDismiss">
-      <div class="modal-wrapper">
-        <div class="modal-container" v-on:click.stop>
-          <div class="modal-header">
-            <div class="title-wrapper">
-              <div class="title">
-                <span>{{ this.title }}</span>
-              </div>
+      <div class="modal">
 
-              <div class="sub-title">
-                <span>:{{ this.subTitle }}</span>
-              </div>
-            </div>
-
-            <button class="dismiss" v-on:click="actionDismiss">
-              <div class="dismiss-image-wrapper">
-                <img src="@assets/image/dismiss-icon.svg" alt="dismiss button icon" class="dismiss-image">
-              </div>
-            </button>
-          </div>
-
-          <div class="modal-content">
-            <slot name="modal-content"></slot>
-          </div>
-
-          <div class="modal-submit">
-            <button class="cancel">
-              <span>CANCEL</span>
-            </button>
-
-            <button class="confirm">
-              <span>{{ this.confirmButtonTitle }}</span>
-            </button>
-          </div>
-        </div>
       </div>
-
     </div>
   </transition>
 </template>
@@ -63,7 +68,6 @@ export default Vue.extend({
 
   data: function () {
     return {
-
     };
   },
 
@@ -71,7 +75,7 @@ export default Vue.extend({
     actionDismiss(): void {
       this.$emit("dismiss");
     }
-  }
+  },
 });
 </script>
 

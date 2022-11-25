@@ -99,4 +99,5 @@ section.channel-private-mode {
 button.private-mode-switch > img {
     width: 40px;
     height: auto;
+    filter: invert(100%);
 }
