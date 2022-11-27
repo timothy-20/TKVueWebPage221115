@@ -20,9 +20,7 @@
 
     </div>
 
-    <tk-general-modal-frame ref="TKGeneralModalFrame"
-                            v-show="isModalShown"
-                            v-on:dismiss="dismissModal">
+    <tk-general-modal-frame v-show="isModalShown" v-on:dismiss="dismissModal">
       <tk-add-category-content slot="modal-content" />
     </tk-general-modal-frame>
   </div>
@@ -69,11 +67,9 @@ export default {
     },
     presentModal() {
       this.isModalShown = true;
-      this.$refs.TKGeneralModalFrame.checkShow(this.isModalShown);
     },
     dismissModal() {
       this.isModalShown = false;
-      this.$refs.TKGeneralModalFrame.checkShow(this.isModalShown);
     }
   },
 };
