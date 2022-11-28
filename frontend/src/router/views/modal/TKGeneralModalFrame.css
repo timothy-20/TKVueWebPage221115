@@ -2,24 +2,29 @@
     color: var(--primary-font-color);
 }
 
-.modal-mask {
+#modal-frame {
     width: 100%;
     height: 100%;
+    position: fixed;
     display: flex;
     flex-flow: column wrap;
     align-items: center;
     justify-content: center;
-    position: fixed;
     top: 0;
     left: 0;
-    z-index: 9999;
+    z-index: 10;
+}
+
+.modal-mask {
+    width: inherit;
+    flex: 1 1 auto;
     background-color: rgba(0, 0, 0, 0.7);
 }
 
 .modal-container {
     width: 460px;
     max-height: 600px;
-    margin: 0 auto;
+    position: fixed;
     border-radius: 15px;
     background-color: var(--primary-bg-color);
 }
@@ -101,7 +106,12 @@ button.confirm {
 
 .modal-fade-enter-active,
 .modal-fade-leave-active {
-    transition: opacity 0.3s linear;
+    transition: opacity 0.3s ease;
+}
+
+.modal-pop-enter-active,
+.modal-pop-leave-active {
+    transition: all 0.2s ease;
 }
 
 .modal-fade-enter,
@@ -109,14 +119,11 @@ button.confirm {
     opacity: 0;
 }
 
-.modal-fade-enter-active .modal-container,
-.modal-fade-leave-active .modal-container {
-    transition: opacity 0.3s linear, transform 0.3s;
+.modal-pop-enter {
+    transform: scale(60%);
 }
 
-.modal-fade-enter .modal-container,
-.modal-fade-leave-to .modal-container {
+.modal-pop-leave-to {
     opacity: 0;
-    /*transform: translateY(-30px);*/
-    transform: scale(120%);
+    transform: scale(90%);
 }

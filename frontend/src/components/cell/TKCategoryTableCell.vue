@@ -20,7 +20,10 @@
 
     </div>
 
-    <tk-general-modal-frame v-show="isModalShown" v-on:dismiss="dismissModal">
+    <tk-general-modal-frame v-model="isModalShow"
+                            v-bind:title="'Make channel'"
+                            v-bind:sub-title="'belongs to ' + this.categoryName"
+                            v-bind:confirm-button-title="'MAKE CHANNEL'">
       <tk-add-category-content slot="modal-content" />
     </tk-general-modal-frame>
   </div>
@@ -36,21 +39,18 @@ export default {
     "tk-general-modal-frame": TKGeneralModalFrame,
     "tk-add-category-content": TKAddCategoryModalContent,
   },
-
   props: {
     categoryName: {
       type: String,
       default: "Untitled"
     }
   },
-
   data: function () {
     return {
-      isModalShown: false,
+      isModalShow: false,
       isCategoryFold: true,
     };
   },
-
   methods: {
     actionDropDown(event) {
       this.isCategoryFold = !this.isCategoryFold;
@@ -66,10 +66,10 @@ export default {
       }
     },
     presentModal() {
-      this.isModalShown = true;
+      this.isModalShow = true;
     },
     dismissModal() {
-      this.isModalShown = false;
+      this.isModalShow = false;
     }
   },
 };

@@ -1,7 +1,11 @@
 <template>
-  <transition name="modal-fade" appear>
-    <div class="modal-mask" v-on:click="actionDismiss">
-      <div class="modal-container" v-on:click.stop>
+  <div id="modal-frame" v-if="isModalShow" v-on:click="actionDismiss">
+    <transition name="modal-fade">
+      <div class="modal-mask" v-show="isShow"></div>
+    </transition>
+
+    <transition name="modal-pop">
+      <div class="modal-container" v-show="isShow" v-on:click.stop>
         <div class="modal-header">
           <div class="title-wrapper">
             <div class="title">
@@ -34,14 +38,22 @@
           </button>
         </div>
       </div>
-    </div>
-  </transition>
+    </transition>
+  </div>
 </template>
 
 <script>
 export default {
   name: "TKCategoryAdderModal",
+  model: {
+      prop: "isModalShow",
+      event: "updateModalShow",
+  },
   props: {
+    isModalShow: {
+      type: Boolean,
+      default: false,
+    },
     title: {
       type: String,
       default: "Untitled"
@@ -55,15 +67,33 @@ export default {
       default: "CONFIRM"
     },
   },
-
   data: function () {
     return {
+      isShow: false,
+      timeout: null,
     };
   },
-
+  watch: {
+    isModalShow () {
+      if (this.isModalShow) {
+        this.$nextTick(() => {
+          this.isShow = this.isModalShow;
+        });
+      }
+    },
+  },
   methods: {
     actionDismiss() {
-      this.$emit("dismiss");
+      if (this.timeout) {
+        clearTimeout(this.timeout);
+
+        this.timeout = null;
+      }
+
+      this.isShow = false;
+      this.timeout = setTimeout(() => {
+        this.$emit("updateModalShow", false);
+      }, 300);
     },
   },
 }

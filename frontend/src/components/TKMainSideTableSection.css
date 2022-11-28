@@ -16,36 +16,46 @@
 section.title {
     box-shadow: var(--primary-box-shadow-bottom);
     background-color: var(--primary-dark-bg-color);
+    transition: background-color 0.4s ease;
+}
+
+section.title:hover {
+    background-color: var(--primary-light-bg-color);
 }
 
 .title-wrapper {
-    margin: 0.8rem 1rem;
+    padding: 13px 15px;
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    justify-content: space-between;
+    gap: 10px;
 }
 
-.title .title-text {
+.title-label {
+    flex: 1 1 auto;
+    text-align: left;
     font-size: 15px;
     font-family: NotoSansKR-Bold;
 }
 
-.title button.title-extension {
-    width: 0.8rem;
-    height: 0.8rem;
+.chevron-down {
+    width: 20px;
+    flex: 0 1 auto;
+    display: flex;
+    align-items: center;
 }
 
-.title-extension svg.arrow-image {
-    fill: none;
-    stroke: #dedede;
-    stroke-width: 0.9rem;
-    stroke-linecap: round;
-    stroke-linejoin: round;
+.chevron-down .chevron-down-icon {
+    filter: invert(80%);
+    rotate: 180deg;
 }
+
+
+
+
 
 section.table {
-    flex: 1 0 0;
+    flex: 1 0 0px;
     overflow: hidden auto;
     background-color: var(--primary-bg-color);
 }

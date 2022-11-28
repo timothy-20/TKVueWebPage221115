@@ -13,7 +13,11 @@
     grid-column-gap: 11px;
     grid-row-gap: 4px;
     border-radius: 3px;
-    background-color: #494949;
+    background-color: var(--primary-dark-bg-color);
+}
+
+.container:hover {
+    background-color: #414141;
 }
 
 .icon {
@@ -47,4 +51,5 @@
 
 .check-radio-icon {
     grid-area: radioIcon;
+    filter: invert(100%);
 }

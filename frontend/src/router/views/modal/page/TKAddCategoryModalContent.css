@@ -28,10 +28,11 @@
     padding-left: 6px;
 }
 
-.channel-type-selector {
+ul.channel-type-selector-table {
     display: flex;
     flex-flow: column wrap;
-    gap: 8px;
+    justify-content: center;
+    gap: 7px;
 }
 
 .text-field-wrapper {

@@ -1,14 +1,15 @@
 <template>
   <div id="root">
     <div class="side-table-container">
-      <section class="title">
+      <section class="title" aria-expanded="false" v-on:click="actionCategory($event)">
         <div class="title-wrapper">
-          <span class="title-text">Untitled</span>
-          <button class="title-extension" type="button">
-            <svg class="arrow-image" x="0" y="0" viewBox="0 0 100 100">
-              <polyline points="10 30, 50 70, 90 30" />
-            </svg>
-          </button>
+          <div class="title-label">
+            <span>Category</span>
+          </div>
+
+          <div class="chevron-down">
+            <img class="chevron-down-icon" src="@assets/image/chevron-icon.svg" alt="chevron down icon" />
+          </div>
         </div>
       </section>
 
@@ -49,6 +50,14 @@ export default {
   components: {
     TKCategoryTableCell,
   },
+
+  methods: {
+    actionCategory(event) {
+      let categoryElement = event.currentTarget;
+
+      console.log(categoryElement.ariaChecked);
+    }
+  }
 }
 </script>
 
