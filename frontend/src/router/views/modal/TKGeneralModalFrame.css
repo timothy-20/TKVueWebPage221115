@@ -120,7 +120,7 @@ button.confirm {
 }
 
 .modal-pop-enter {
-    transform: scale(60%);
+    transform: scale(70%);
 }
 
 .modal-pop-leave-to {

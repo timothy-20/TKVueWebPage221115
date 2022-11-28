@@ -89,6 +89,9 @@ export default {
         });
       }
     },
+    isEnableConfirm() {
+      console.log("Check enable confirm in TKGeneralFrame");
+    }
   },
   methods: {
     actionDismiss() {

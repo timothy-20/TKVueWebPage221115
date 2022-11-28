@@ -26,10 +26,9 @@
                             v-bind:confirm-button-title="'MAKE CHANNEL'"
                             >
       <template v-slot:modal-content="content">
+<!--        ="content"-->
+        <tk-add-category-content v-model="content.isEnableConfirm" />
         <h1>{{`This is modal content enable flag: ${content.isEnableConfirm}`}}</h1>
-        <tk-add-category-content />
-        <!--      v-bind:is-enable-confirm=""-->
-        <!--      v-bind:select-box-list=""-->
       </template>
     </tk-general-modal-frame>
   </div>
@@ -73,9 +72,6 @@ export default {
     },
     presentModal() {
       this.isModalShow = true;
-    },
-    dismissModal() {
-      this.isModalShow = false;
     }
   },
 };

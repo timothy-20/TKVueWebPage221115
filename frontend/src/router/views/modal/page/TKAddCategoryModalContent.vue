@@ -62,6 +62,10 @@ export default {
   components: {
     "tk-general-select-box-cell": TKGeneralSelectBoxCell,
   },
+  model: {
+    prop: "isEnableConfirm",
+    event: "updateEnableConfirm"
+  },
   props: {
     isEnableConfirm: {
       type: Boolean,
@@ -83,6 +87,11 @@ export default {
           },
         ];
       }
+    }
+  },
+  watch: {
+    isEnableConfirm(newValue, oldValue) {
+      console.log(`Enable confirm flag, old value: ${oldValue} new value: ${newValue}`);
     }
   },
   data: function () {
@@ -112,8 +121,9 @@ export default {
     insertChannelName(event) {
       this.channelInfo.channelName = event.currentTarget.value;
 
-      if (this.channelInfo.channelName.length > 0) {
-
+      if (this.isEnableConfirm === false && this.channelInfo.channelName.length > 0) {
+        console.log("Enable confirm!");
+        this.$emit("updateEnableConfirm", true);
       }
     }
   },
