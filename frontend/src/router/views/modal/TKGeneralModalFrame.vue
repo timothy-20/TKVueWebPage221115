@@ -25,11 +25,14 @@
         </div>
 
         <div class="modal-content">
-          <slot name="modal-content"></slot>
+          <slot name="modal-content" v-bind:isEnableConfirm="isEnableConfirm"></slot>
         </div>
 
         <div class="modal-submit">
-          <button class="cancel">
+          <button class="cancel"
+                  v-on:click="actionDismiss"
+                  v-on:mouseover="$event.currentTarget.style.textDecoration = 'underline'"
+                  v-on:mouseleave="$event.currentTarget.style.textDecoration = 'none'">
             <span>CANCEL</span>
           </button>
 
@@ -53,6 +56,11 @@ export default {
     isModalShow: {
       type: Boolean,
       default: false,
+    },
+    isEnableConfirm: {
+      type:Boolean,
+      default: false,
+      // require: true
     },
     title: {
       type: String,

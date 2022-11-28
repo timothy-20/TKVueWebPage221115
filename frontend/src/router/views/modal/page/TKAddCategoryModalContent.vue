@@ -26,7 +26,8 @@
         <div class="text-field-container">
           <div class="text-field-wrapper">
             <img src="@assets/image/hash-icon.svg" alt="hash icon" class="channel-type-icon"/>
-            <input type="text" class="text-field" maxlength="100" placeholder="New channel" />
+            <input type="text" class="text-field" maxlength="100" placeholder="New channel"
+                   v-on:input="insertChannelName" />
           </div>
         </div>
       </section>
@@ -62,6 +63,10 @@ export default {
     "tk-general-select-box-cell": TKGeneralSelectBoxCell,
   },
   props: {
+    isEnableConfirm: {
+      type: Boolean,
+      default: false,
+    },
     selectBoxList: {
       type: Array,
       default: function () {
@@ -104,6 +109,13 @@ export default {
         return selectBox;
       });
     },
+    insertChannelName(event) {
+      this.channelInfo.channelName = event.currentTarget.value;
+
+      if (this.channelInfo.channelName.length > 0) {
+
+      }
+    }
   },
 }
 

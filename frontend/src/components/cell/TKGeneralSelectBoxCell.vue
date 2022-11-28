@@ -39,7 +39,6 @@ export default {
   },
   watch: {
     isChecked(newValue) {
-      console.log("AAAAA");
       this.actionCheck(newValue);
     }
   },

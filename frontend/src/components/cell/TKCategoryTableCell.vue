@@ -23,8 +23,14 @@
     <tk-general-modal-frame v-model="isModalShow"
                             v-bind:title="'Make channel'"
                             v-bind:sub-title="'belongs to ' + this.categoryName"
-                            v-bind:confirm-button-title="'MAKE CHANNEL'">
-      <tk-add-category-content slot="modal-content" />
+                            v-bind:confirm-button-title="'MAKE CHANNEL'"
+                            >
+      <template v-slot:modal-content="content">
+        <h1>{{`This is modal content enable flag: ${content.isEnableConfirm}`}}</h1>
+        <tk-add-category-content />
+        <!--      v-bind:is-enable-confirm=""-->
+        <!--      v-bind:select-box-list=""-->
+      </template>
     </tk-general-modal-frame>
   </div>
 </template>
