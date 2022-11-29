@@ -66,21 +66,26 @@ section.channel-private-mode {
 .private-mode-wrapper {
     display: grid;
     grid-template-columns: 20px 1fr auto;
-    grid-template-rows: auto 1fr;
+    grid-template-rows: 14px auto;
     grid-template-areas:
             "icon title switch"
             ". body switch";
-    grid-column-gap: 5px;
-    grid-row-gap: 3px;
+    grid-column-gap: 4px;
+    grid-row-gap: 5px;
 }
 
 .private-mode-wrapper .channel-type-icon {
     grid-area: icon;
+    filter: invert(80%);
+    background-color: red;
 }
 
 .private-mode-wrapper .title {
     grid-area: title;
+    font-size: 16px;
     font-family: NotoSansKR-Medium;
+    background-color: red;
+    line-height: 100%;
 }
 
 .private-mode-wrapper .body {

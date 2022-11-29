@@ -28,8 +28,7 @@
           <slot name="modal-content"
                 v-bind:isModalShow="isModalShow"
                 v-bind:updateModalContent="updateModalContent"
-                v-bind:bucket="bucket"
-          />
+                v-bind:updateEnableConfirm="updateEnableConfirm" />
         </div>
 
         <div class="modal-submit">
@@ -80,16 +79,13 @@ export default {
     return {
       isShow: false,
       timeout: null,
-      bucket: {},
+      content: null
     };
   },
   watch: {
     isModalShow () {
       if (this.isModalShow) {
-        this.$nextTick(() => {
-          this.isShow = this.isModalShow;
-          this.updateModalContent(null);
-        });
+        this.$nextTick(() => this.isShow = this.isModalShow);
       }
     },
   },
@@ -106,15 +102,25 @@ export default {
       }, 300);
     },
     actionConfirm() {
-      console.log("Action confirm");
+      this.$emit("sendModalContent", this.content);
     },
     updateModalContent(content) {
+      console.log("VAVAV: " + content);
+      this.content = content;
+
+      if (content.isPrivate) {
+        this.$refs.confirmButton.nodeValue = "AAAA";
+      }
+    },
+    updateEnableConfirm(flag) {
       let confirmButton = this.$refs.confirmButton;
 
-      if (content !== null) {
+      if (flag) {
         confirmButton.disabled = false;
         confirmButton.style.opacity = "1";
         confirmButton.style.cursor = "default";
+        confirmButton.onmouseover = () => confirmButton.style.backgroundColor = "#666666";
+        confirmButton.onmouseleave = () => confirmButton.style.backgroundColor = "#808080";
 
       } else {
         confirmButton.disabled = true;
@@ -124,6 +130,7 @@ export default {
     }
   },
 }
+
 </script>
 
 <style scoped src="./TKGeneralModalFrame.css" />

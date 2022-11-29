@@ -20,14 +20,15 @@
 
     </div>
     <tk-general-modal-frame v-model="isModalShow"
+                            v-on:sendModalContent="receiveModalContent"
                             v-bind:title="'Make channel'"
                             v-bind:sub-title="'belongs to ' + this.categoryName"
                             v-bind:confirm-button-title="'MAKE CHANNEL'">
       <template v-slot:modal-content="scope">
         <tk-add-category-modal-content v-on:updateModalContent="scope.updateModalContent"
-                                       v-bind:channel-info="scope.bucket"
+                                       v-on:updateEnableConfirm="scope.updateEnableConfirm"
+
         />
-        <h3>Channel result: {{scope.bucket}}</h3>
       </template>
     </tk-general-modal-frame>
   </div>
@@ -53,6 +54,7 @@ export default {
     return {
       isModalShow: false,
       isCategoryFold: true,
+      modalContent: {}
     };
   },
   methods: {
@@ -71,6 +73,17 @@ export default {
     },
     presentModal() {
       this.isModalShow = true;
+    },
+    receiveModalContent(content) {
+      console.log("Receive content: " + content);
+
+      if (content !== null) {
+        console.log(content.type);
+        console.log(content.name);
+        console.log(content.isPrivate);
+
+        this.modalContent = content;
+      }
     }
   },
 };
