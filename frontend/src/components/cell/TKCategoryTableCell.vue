@@ -19,30 +19,29 @@
     <div class="category-dropdown" v-if="!isCategoryFold">
 
     </div>
-
     <tk-general-modal-frame v-model="isModalShow"
                             v-bind:title="'Make channel'"
                             v-bind:sub-title="'belongs to ' + this.categoryName"
-                            v-bind:confirm-button-title="'MAKE CHANNEL'"
-                            >
-      <template v-slot:modal-content="content">
-<!--        ="content"-->
-        <tk-add-category-content v-model="content.isEnableConfirm" />
-        <h1>{{`This is modal content enable flag: ${content.isEnableConfirm}`}}</h1>
+                            v-bind:confirm-button-title="'MAKE CHANNEL'">
+      <template v-slot:modal-content="scope">
+        <tk-add-category-modal-content v-on:updateModalContent="scope.updateModalContent"
+                                       v-bind:channel-info="scope.bucket"
+        />
+        <h3>Channel result: {{scope.bucket}}</h3>
       </template>
     </tk-general-modal-frame>
   </div>
 </template>
 
 <script>
-import TKGeneralModalFrame from "@views/modal/TKGeneralModalFrame.vue";
-import TKAddCategoryModalContent from "@views/modal/page/TKAddCategoryModalContent.vue";
+import TKGeneralModalFrame from "@views/modal/frame/TKGeneralModalFrame.vue";
+import TKAddCategoryModalContent from "@views/modal/content/TKAddCategoryModalContent.vue";
 
 export default {
   name: "TKCategoryTableCell",
   components: {
     "tk-general-modal-frame": TKGeneralModalFrame,
-    "tk-add-category-content": TKAddCategoryModalContent,
+    "tk-add-category-modal-content": TKAddCategoryModalContent,
   },
   props: {
     categoryName: {

@@ -25,7 +25,11 @@
         </div>
 
         <div class="modal-content">
-          <slot name="modal-content" v-bind:isEnableConfirm="isEnableConfirm"></slot>
+          <slot name="modal-content"
+                v-bind:isModalShow="isModalShow"
+                v-bind:updateModalContent="updateModalContent"
+                v-bind:bucket="bucket"
+          />
         </div>
 
         <div class="modal-submit">
@@ -36,7 +40,9 @@
             <span>CANCEL</span>
           </button>
 
-          <button class="confirm">
+          <button class="confirm"
+                  ref="confirmButton"
+                  v-on:click="actionConfirm">
             <span>{{ this.confirmButtonTitle }}</span>
           </button>
         </div>
@@ -47,20 +53,15 @@
 
 <script>
 export default {
-  name: "TKCategoryAdderModal",
+  name: "TKGeneralModalFrame",
   model: {
-      prop: "isModalShow",
-      event: "updateModalShow",
+    prop: "isModalShow",
+    event: "updateModalShow",
   },
   props: {
     isModalShow: {
       type: Boolean,
-      default: false,
-    },
-    isEnableConfirm: {
-      type:Boolean,
-      default: false,
-      // require: true
+      default: false
     },
     title: {
       type: String,
@@ -79,6 +80,7 @@ export default {
     return {
       isShow: false,
       timeout: null,
+      bucket: {},
     };
   },
   watch: {
@@ -86,18 +88,15 @@ export default {
       if (this.isModalShow) {
         this.$nextTick(() => {
           this.isShow = this.isModalShow;
+          this.updateModalContent(null);
         });
       }
     },
-    isEnableConfirm() {
-      console.log("Check enable confirm in TKGeneralFrame");
-    }
   },
   methods: {
     actionDismiss() {
       if (this.timeout) {
         clearTimeout(this.timeout);
-
         this.timeout = null;
       }
 
@@ -106,6 +105,23 @@ export default {
         this.$emit("updateModalShow", false);
       }, 300);
     },
+    actionConfirm() {
+      console.log("Action confirm");
+    },
+    updateModalContent(content) {
+      let confirmButton = this.$refs.confirmButton;
+
+      if (content !== null) {
+        confirmButton.disabled = false;
+        confirmButton.style.opacity = "1";
+        confirmButton.style.cursor = "default";
+
+      } else {
+        confirmButton.disabled = true;
+        confirmButton.style.opacity = "0.5";
+        confirmButton.style.cursor = "not-allowed";
+      }
+    }
   },
 }
 </script>

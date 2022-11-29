@@ -8,7 +8,7 @@
         <div class="channel-type-selector">
           <ul class="channel-type-selector-table">
             <li class="channel-type-selector-table-cell"
-                v-for="(selectBox, index) in this.selectBoxList" v-bind:key="index"
+                v-for="(selectBox, index) in this.selectBoxCellInfos" v-bind:key="index"
                 v-on:click="updateCheckedCell(index)">
               <tk-general-select-box-cell class="channel-type-select-box"
                                           v-bind:description-title="selectBox.title"
@@ -27,7 +27,7 @@
           <div class="text-field-wrapper">
             <img src="@assets/image/hash-icon.svg" alt="hash icon" class="channel-type-icon"/>
             <input type="text" class="text-field" maxlength="100" placeholder="New channel"
-                   v-on:input="insertChannelName" />
+                   v-on:input="insertChannelName($event)" />
           </div>
         </div>
       </section>
@@ -43,87 +43,81 @@
           </div>
 
           <button class="private-mode-switch">
-            <img v-on:click="channelInfo.isChannelPrivate = !channelInfo.isChannelPrivate"
-                 v-bind:src="require(`@assets/image/${channelInfo.isChannelPrivate ? 'switch-on-icon' : 'switch-off-icon'}.svg`)"
+            <img v-on:click="isChannelPrivate = !isChannelPrivate"
+                 v-bind:src="require(`@assets/image/${isChannelPrivate ? 'switch-on-icon' : 'switch-off-icon'}.svg`)"
                  alt="private mode switch icon" />
           </button>
         </div>
       </section>
     </div>
   </div>
-
 </template>
 
 <script>
-import TKGeneralSelectBoxCell from "@components/cell/TKGeneralSelectBoxCell.vue";
+import TKGeneralSelectBoxCell from "@/components/cell/TKGeneralSelectBoxCell.vue";
 
 export default {
   name: "TKModalAddCategoryPage",
   components: {
     "tk-general-select-box-cell": TKGeneralSelectBoxCell,
   },
-  model: {
-    prop: "isEnableConfirm",
-    event: "updateEnableConfirm"
-  },
   props: {
-    isEnableConfirm: {
-      type: Boolean,
-      default: false,
-    },
-    selectBoxList: {
-      type: Array,
+    channelInfo: {
+      type: Object,
       default: function () {
-        return [
-          {
-            title: "Text",
-            subTitle: "Send message, image, GIF, emoticon, suggestion, joke",
-            isChecked: true,
-          },
-          {
-            title: "Voice",
-            subTitle: "Share your voice, video, and screen",
-            isChecked: false,
-          },
-        ];
+        return {
+          type: this.channelType,
+          name: this.channelName,
+          isPrivate: this.isChannelPrivate
+        };
       }
-    }
-  },
-  watch: {
-    isEnableConfirm(newValue, oldValue) {
-      console.log(`Enable confirm flag, old value: ${oldValue} new value: ${newValue}`);
     }
   },
   data: function () {
     return {
-      channelInfo: {
-        channelType: "",
-        channelName: "Untitled",
-        isChannelPrivate: false,
-      },
+      isEnableConfirm: false,
+      channelType: "",
+      channelName: "Untitled",
+      isChannelPrivate: false,
+      selectBoxCellInfos: [
+        {
+          title: "Text",
+          subTitle: "Send message, image, GIF, emoticon, suggestion, joke",
+          isChecked: true,
+        },
+        {
+          title: "Voice",
+          subTitle: "Share your voice, video, and screen",
+          isChecked: false,
+        },
+      ],
     };
   },
   methods: {
     updateCheckedCell(index) {
       console.log("Checked cell index: " + index);
 
-      this.selectBoxList.map((selectBox, boxIndex) => {
+      this.selectBoxCellInfos.map((selectBox, boxIndex) => {
         selectBox.isChecked = false;
 
         if (boxIndex === index) {
           selectBox.isChecked = true;
-          this.channelInfo.channelType = selectBox.title;
+          this.channelType = selectBox.title;
         }
 
         return selectBox;
       });
     },
     insertChannelName(event) {
-      this.channelInfo.channelName = event.currentTarget.value;
+      this.channelName = event.currentTarget.value;
 
-      if (this.isEnableConfirm === false && this.channelInfo.channelName.length > 0) {
-        console.log("Enable confirm!");
-        this.$emit("updateEnableConfirm", true);
+      if (this.isEnableConfirm === false && this.channelName.length > 0) {
+        this.isEnableConfirm = true;
+        this.$emit("updateModalContent", this.channelInfo);
+
+      } else if (this.isEnableConfirm === true && this.channelInfo.channelName.length == 0) {
+        this.isEnableConfirm = false;
+        this.$emit("updateModalContent", null);
       }
     }
   },
